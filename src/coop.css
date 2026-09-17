@@ -1,0 +1,704 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&family=Press+Start+2P&display=swap');
+
+:root {
+  --black: #0b0b0c;
+  --bg-color: #ffffff; 
+  --folder-bg: #ffffff;
+  --tab-inactive: #e0e0e0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+
+/* =========================================================
+   HEADER & FOOTER
+   ========================================================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--black);
+  color: white;
+  z-index: 100;
+  padding: 16px 24px;
+}
+
+.site-footer {
+  background-color: var(--black);
+  color: white;
+  padding: 24px;
+  margin-top: 40px;
+}
+
+.header-content, .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: 'Press Start 2P', system-ui;
+  font-size: 1.1rem;
+}
+
+.footer-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  color: #aaa;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #aaa;
+}
+
+/* =========================================================
+   MAIN LAYOUT & TYPOGRAPHY
+   ========================================================= */
+
+.coop-page {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  color: var(--black);
+}
+
+.coop-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.pixel-title {
+  font-family: 'Press Start 2P', system-ui;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.pixel-title.white-text {
+  color: white;
+}
+
+.pixel-title.text-center {
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: #555;
+  margin: 0 0 24px 0;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #222;
+  margin-bottom: 1.2rem;
+}
+
+.center-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   FOLDER TABS UI
+   ========================================================= */
+
+.tabs-container {
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  margin-left: 24px;
+}
+
+.tab-button {
+  position: relative;
+  overflow: visible;
+  font-family: 'Press Start 2P', system-ui;
+  font-size: 0.65rem;
+  padding: 16px 32px;
+  background-color: var(--tab-inactive);
+  color: var(--black);
+  border: 3px solid var(--black);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tab-button.active {
+  background-color: var(--folder-bg);
+  padding-bottom: 20px;
+  margin-bottom: -3px;
+  z-index: 10;
+}
+
+.tab-active-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--folder-bg);
+  border-radius: 12px 12px 0 0;
+  z-index: 0;
+}
+
+.tab-button-label {
+  position: relative;
+  z-index: 1;
+}
+
+.folder-content {
+  background-color: var(--folder-bg);
+  border: 3px solid var(--black);
+  border-radius: 0 12px 12px 12px;
+  padding: 60px 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   GENERIC SECTIONS & IMAGES
+   ========================================================= */
+
+.split-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.split-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.text-content {
+  flex: 1.2;
+}
+
+.visual-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.image-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-placeholder.logo-placeholder {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* =========================================================
+   SCROLL INTERACTIVE CONTAINERS (Duties & Goals)
+   ========================================================= */
+
+.scroll-container {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-sticky-content {
+  position: sticky;
+  top: 70px; 
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 40px; 
+}
+
+/* --- Job Duties Stack Layout --- */
+
+.duty-card-deck {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  height: 420px; 
+  isolation: isolate;
+}
+
+.duty-step-card {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--black);
+  border-radius: 14px;
+  transform-origin: center center;
+}
+
+.duty-card-inner {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+.duty-number {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.duty-text {
+  flex: 1.5;
+}
+
+.duty-visual {
+  flex: 1;
+}
+
+.icon-placeholder {
+  background-color: #fff;
+  border: 3px solid var(--black);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-family: 'Press Start 2P', system-ui;
+  font-size: 0.7rem;
+  color: var(--black);
+  text-align: center;
+  padding: 24px;
+  min-height: 120px;
+}
+
+/* --- Goals Timeline Layout --- */
+
+.goals-timeline-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 900px;
+  gap: 40px;
+}
+
+.goals-timeline {
+  flex: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.timeline-node-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-node {
+  height: 32px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot {
+  width: 14px; 
+  height: 14px; 
+  border-radius: 50%;
+  border: 3px solid var(--black);
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.timeline-dot.active {
+  background-color: var(--black);
+  transform: scale(1.4);
+}
+
+.timeline-line {
+  width: 3px;
+  height: 24px; 
+  background-color: var(--black);
+  margin: 4px 0;
+}
+
+.goal-content-wrapper {
+  flex: 1.5;
+  display: flex;
+  align-items: flex-start;
+}
+
+.goal-text-content h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+  line-height: 32px; 
+}
+
+.goal-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.placeholder-pane {
+  min-height: 360px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.placeholder-pane p {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   AI IN THE REAL WORLD
+   ========================================================= */
+
+.section-ai {
+  margin: 40px 0; 
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: #f4f4f4;
+  padding: 48px;
+}
+
+.glass-text {
+  flex: 1.5;
+}
+
+.glass-text p {
+  color: #e0e0e0;
+}
+
+.glass-visual {
+  float: right;
+  margin: 0 0 1rem 2rem;
+  width: 40%;
+}
+
+/* =========================================================
+   LOOKING AHEAD (NOTEPAD UI)
+   ========================================================= */
+
+.section-looking-ahead {
+  margin-bottom: 20px;
+}
+
+.notepad-window {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  padding: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.notepad-titlebar {
+  background: linear-gradient(90deg, #000000, #ffffff);
+  color: white;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.notepad-icon {
+  margin-right: 6px;
+}
+
+.notepad-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.win-btn {
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  color: black;
+  font-weight: bold;
+  height: 20px;
+  width: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.win-btn:active {
+  border-color: #000000 #ffffff #ffffff #000000;
+}
+
+.notepad-menu {
+  display: flex;
+  gap: 16px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  color: black;
+}
+
+.notepad-menu span::first-letter {
+  text-decoration: underline;
+}
+
+.notepad-content {
+  background: white;
+  border: 2px solid;
+  border-color: #000000 #ffffff #ffffff #000000;
+  padding: 40px 32px;
+  min-height: 250px;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (Aggressive Mobile Down-scaling)
+   ========================================================= */
+
+@media (max-width: 900px) {
+  
+  /* Mobile Menu Container Adjustments */
+  .tabs-container {
+    padding-top: 16px; 
+  }
+
+  /* Style matching exactly to the provided black button image */
+  .mobile-menu-toggle {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 1.1rem; 
+    color: #ffffff;
+    background: var(--black);
+    padding: 16px;
+    border: none;
+    border-radius: 16px; 
+    cursor: pointer;
+    margin-bottom: 8px; 
+  }
+  
+  .tabs-header {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0;
+    background-color: #f2f2f2; 
+    padding: 8px 24px;
+    border-radius: 4px;
+  }
+  
+  .tabs-header.open {
+    display: flex;
+  }
+  
+  /* Style matching exactly to the grey condensed dropdown list */
+  .tab-button {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; 
+    letter-spacing: 1px;
+    color: var(--black);
+    background-color: transparent !important;
+    border: none;
+    border-bottom: 4px solid var(--black); 
+    border-radius: 0;
+    padding: 16px 0;
+    margin-bottom: 0;
+  }
+
+  .tab-button:last-child {
+    border-bottom: none;
+  }
+
+  .tab-button.active {
+    padding-bottom: 16px; 
+  }
+
+  .tab-active-bg {
+    display: none; 
+  }
+  
+  .pixel-title {
+    font-size: 0.9rem;
+  }
+  
+  p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  
+  .folder-content {
+    padding: 24px 16px;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .split-section, .split-section.reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .visual-content,
+  .split-section.reverse .visual-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .scroll-sticky-content {
+    top: 60px;
+    height: calc(100vh - 60px);
+    justify-content: flex-start;
+    padding-top: 32px; 
+    gap: 24px; 
+  }
+
+  .duty-step-card.is-behind {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
+  .duty-card-deck {
+    height: 560px; 
+  }
+
+  .duty-card-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px 64px 24px;
+    gap: 0; 
+  }
+
+  .duty-visual {
+    display: none;
+  }
+
+  .duty-number {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: block;
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .goals-timeline-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .goals-timeline {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .timeline-node-wrapper {
+    flex-direction: row;
+  }
+
+  .timeline-node {
+    width: 32px;
+    height: auto;
+  }
+
+  .timeline-line {
+    width: 24px; 
+    height: 3px;
+    margin: 0 4px;
+  }
+
+  .goal-text-content h3 {
+    margin: 0 0 12px 0;
+  }
+
+  .section-ai {
+    padding: 32px 24px;
+  }
+
+  .glass-visual {
+    width: 100%;
+    float: none;
+    margin: 0 0 24px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-placeholder {
+    min-height: 180px;
+    aspect-ratio: auto;
+  }
+}
