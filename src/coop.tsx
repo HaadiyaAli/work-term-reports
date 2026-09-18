@@ -6,8 +6,24 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { Lottie } from "lottie-react";
+
+// --- Asset Imports ---
 import pokemonCard from "./assets/Haadiya_pokemon_card.png";
 import magnetForensicsLogo from "./assets/mf-logo.png";
+import aiImage from "./assets/ai.jpg";
+import codesImage from "./assets/codes.webp";
+import timeImage from "./assets/time.jpg";
+
+// Animations
+import anim1 from "./assets/anim1.json";
+import seoAnim from "./assets/seo.json";
+import responsiveAnim from "./assets/responsive.json";
+import speakerAnim from "./assets/speaker.json";
+import thinkAnim from "./assets/think.json";
+import problemAnim from "./assets/problem.json";
+import anim3 from "./assets/anim3.json";
+
 import "./coop.css";
 
 /* =========================================================
@@ -93,7 +109,11 @@ const DUTY_STEPS: DutyStep[] = [
         everything clean and user-friendly.
       </p>
     ),
-    visual: <div className="icon-placeholder">WP / JS / HTML5 / CSS</div>,
+    visual: (
+      <div className="media-container">
+        <img src={codesImage} alt="HTML CSS JS" className="responsive-img" />
+      </div>
+    ),
   },
   {
     id: "product-pages",
@@ -111,7 +131,11 @@ const DUTY_STEPS: DutyStep[] = [
         versions without UI elements so everyone can read them.
       </p>
     ),
-    visual: <div className="icon-placeholder">FIGMA → WP PATTERNS</div>,
+    visual: (
+      <div className="media-container">
+        <Lottie src={anim1} loop autoplay className="responsive-lottie" />
+      </div>
+    ),
   },
   {
     id: "seo-tools",
@@ -134,7 +158,11 @@ const DUTY_STEPS: DutyStep[] = [
         </p>
       </>
     ),
-    visual: <div className="icon-placeholder seo-icon">SEO DATA</div>,
+    visual: (
+      <div className="media-container">
+        <Lottie src={seoAnim} loop autoplay className="responsive-lottie" />
+      </div>
+    ),
   },
   {
     id: "responsive",
@@ -149,36 +177,50 @@ const DUTY_STEPS: DutyStep[] = [
         work without taking it over.
       </p>
     ),
-    visual: <div className="icon-placeholder">RESPONSIVE DESIGN</div>,
+    visual: (
+      <div className="media-container">
+        <Lottie
+          src={responsiveAnim}
+          loop
+          autoplay
+          className="responsive-lottie"
+        />
+      </div>
+    ),
   },
 ];
 
-type Goal = { title: string; text: string; imageId: string };
+type Goal = {
+  title: string;
+  text: string;
+  animationData?: object;
+  imageSrc?: string;
+};
 
 const GOALS: Goal[] = [
   {
     title: "ORAL COMMUNICATION",
-    imageId: "Image 15",
+    animationData: speakerAnim,
     text: "This is one of my biggest goals because it's a skill I need in any environment. I've definitely grown—I feel a real shift in how comfortable I am reaching out to people and asking questions. Before, it felt forced or nerve-wracking, but now it feels natural in my day-to-day work. There's still room to improve, especially when it comes to interacting with others more intentionally.",
   },
   {
     title: "CRITICAL THINKING",
-    imageId: "Image 16",
+    animationData: thinkAnim,
     text: "I've gotten better at researching things or asking questions when I don't understand something and figuring out why things work the way they do. I've also learned not to rely on AI for everything and to use my own skills to troubleshoot and optimize. Something I've gotten to see more is how fast to rush through hurdles and keep things moving even when there are blockers.",
   },
   {
     title: "PROBLEM SOLVING",
-    imageId: "Image 17",
+    animationData: problemAnim,
     text: "I'm always looking for ways to optimize things or fix bugs. One big hurdle was setting up a local tech environment. It came with a lot of confusion and uncertainty, but I stuck with it. It took time, but I eventually figured it out, and it felt amazing.",
   },
   {
     title: "TECH LITERACY",
-    imageId: "Image 18",
+    animationData: anim3,
     text: "Something really cool I learned, and something you don't really see in school, is the full process of how a webpage comes to life. From context, to approvals, to design, to web, and then final review. Seeing how different teams and vendors interact is really cool. I also saw how important testing and approvals are to catch bugs you'd miss otherwise.",
   },
   {
     title: "TIME MANAGEMENT",
-    imageId: "Image 19",
+    imageSrc: timeImage,
     text: "I've learned that good things take time. I'm always jumping into new ideas, so slowing down and deciding what's actually useful has been a big improvement. I've gotten much better at meeting deadlines, unlike school where procrastination was a huge issue. Now I can actually sit down, focus, and finish my work on time.",
   },
 ];
@@ -310,23 +352,40 @@ const ScrollStateGoals = ({ goals }: { goals: Goal[] }) => {
           </div>
 
           <div className="goal-content-wrapper">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeGoal}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.4 }}
-                className="goal-text-content"
-              >
-                <h3 className="pixel-title">{goals[activeGoal].title}:</h3>
-                <p>{goals[activeGoal].text}</p>
-              </motion.div>
-            </AnimatePresence>
+            <motion.div className="goal-text-slider">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeGoal}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="goal-text-content"
+                >
+                  <h3 className="pixel-title">{goals[activeGoal].title}:</h3>
+                  <p>{goals[activeGoal].text}</p>
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           <div className="goal-visual">
-            <div className="image-placeholder">{goals[activeGoal].imageId}</div>
+            <div className="media-container">
+              {goals[activeGoal].animationData ? (
+                <Lottie
+                  src={goals[activeGoal].animationData}
+                  loop
+                  autoplay
+                  className="responsive-lottie"
+                />
+              ) : (
+                <img
+                  src={goals[activeGoal].imageSrc}
+                  alt={goals[activeGoal].title}
+                  className="responsive-img"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -358,7 +417,7 @@ const Coop = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? "CLOSE" : "MENU"}
+              MENU
             </button>
             <div
               className={`tabs-header ${isMobileMenuOpen ? "open" : ""}`}
@@ -420,11 +479,12 @@ const Coop = () => {
                       </p>
                     </div>
                     <div className="visual-content intro-images">
-                      <div className="image-placeholder">
-                        <img src={pokemonCard} alt="Haadiya Pokemon card" />
-                      </div>
-                      <div className="image-placeholder">
-                        <img src={pokemonCard} alt="Haadiya Pokemon card" />
+                      <div className="media-container">
+                        <img
+                          src={pokemonCard}
+                          alt="Haadiya Pokemon card"
+                          className="responsive-img"
+                        />
                       </div>
                     </div>
                   </div>
@@ -452,10 +512,11 @@ const Coop = () => {
                       </p>
                     </div>
                     <div className="visual-content">
-                      <div className="image-placeholder logo-placeholder">
+                      <div className="media-container">
                         <img
                           src={magnetForensicsLogo}
                           alt="Magnet Forensics logo"
+                          className="responsive-img"
                         />
                       </div>
                     </div>
@@ -473,8 +534,8 @@ const Coop = () => {
                     <h1 className="pixel-title white-text">
                       INTERESTING FINDS: AI IN THE REAL WORLD
                     </h1>
-                    <div className="glass-visual">
-                      <div className="image-placeholder">Image 3</div>
+                    <div className="glass-visual media-container">
+                      <img src={aiImage} alt="AI" className="responsive-img" />
                     </div>
                     <div className="glass-text">
                       <p>
