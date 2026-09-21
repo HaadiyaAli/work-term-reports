@@ -153,7 +153,7 @@ const JobDuties = () => (
         By the nature of my role, I work across both web management and digital
         marketing. On the web side, I spend a lot of time coding with HTML, CSS,
         JavaScript, PHP, and Gutenberg blocks inside a CMS called WordPress. I
-        learned HTML and CSS in q web design course I took my winter 2026
+        learned HTML and CSS in a web design course I took my winter 2026
         semester, picked up JavaScript on my own, and I’ve been learning PHP as
         I go by reviewing smaller code sections and understanding how they fit
         into the larger WordPress structure. On the marketing side, I use tools
