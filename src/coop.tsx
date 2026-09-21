@@ -4,25 +4,31 @@ import {
   motion,
   useMotionValueEvent,
   useScroll,
-  useTransform,
 } from "framer-motion";
 import { Lottie } from "lottie-react";
 
 // --- Asset Imports ---
 import pokemonCard from "./assets/Haadiya_pokemon_card.png";
 import magnetForensicsLogo from "./assets/mf-logo.png";
+import magnetHqImage from "./assets/magnet_hq.jpeg";
 import aiImage from "./assets/ai.jpg";
-import codesImage from "./assets/codes.webp";
 import timeImage from "./assets/time.jpg";
+import noKermitGif from "./assets/no_kermit.gif";
 
 // Animations
 import anim1 from "./assets/anim1.json";
 import seoAnim from "./assets/seo.json";
-import responsiveAnim from "./assets/responsive.json";
 import speakerAnim from "./assets/speaker.json";
 import thinkAnim from "./assets/think.json";
 import problemAnim from "./assets/problem.json";
-import anim3 from "./assets/anim3.json";
+import anim2 from "./assets/anim2.json";
+import htmlTool from "./assets/tools_slider/html.png";
+import cssTool from "./assets/tools_slider/css.png";
+import jsTool from "./assets/tools_slider/js.png";
+import phpTool from "./assets/tools_slider/php.png";
+import dockerTool from "./assets/tools_slider/docker.png";
+import vsTool from "./assets/tools_slider/vs.png";
+import wordpressTool from "./assets/tools_slider/wordpress.png";
 
 import "./coop.css";
 
@@ -90,106 +96,6 @@ const TypewriterTitle = ({
    DATA
    ========================================================= */
 
-type DutyStep = {
-  id: string;
-  text: ReactNode;
-  visual: ReactNode;
-};
-
-const DUTY_STEPS: DutyStep[] = [
-  {
-    id: "web-marketing",
-    text: (
-      <p>
-        By the nature of my role, I work across both web management and digital
-        marketing. On the web side, I spend a lot of time coding with HTML, CSS,
-        JavaScript, and Gutenberg blocks inside a CMS. On the marketing side, I
-        use tools like Yoast to optimize content, choose keywords, write
-        metadata, add accessible alt text, and follow best practices to keep
-        everything clean and user-friendly.
-      </p>
-    ),
-    visual: (
-      <div className="media-container">
-        <img src={codesImage} alt="HTML CSS JS" className="responsive-img" />
-      </div>
-    ),
-  },
-  {
-    id: "product-pages",
-    text: (
-      <p>
-        Some of the bigger projects I've worked on are product pages, which are
-        a major source of conversions for the website. I take Figma designs and
-        turn them into fully functioning pages, applying the coding principles I
-        learned in school and seeing them come to life in a real environment. My
-        more regular tasks include posting blogs with SEO optimization. Through
-        that, I noticed how often we reused the same modules, so I built a
-        system to streamline the process by turning them into WordPress patterns
-        that are easy to access and reuse. I also create HTML emails, and one
-        thing I learned is how to make them accessible—like using text-only
-        versions without UI elements so everyone can read them.
-      </p>
-    ),
-    visual: (
-      <div className="media-container">
-        <Lottie src={anim1} loop autoplay className="responsive-lottie" />
-      </div>
-    ),
-  },
-  {
-    id: "seo-tools",
-    text: (
-      <>
-        <p>
-          I've also gotten to use tools I only heard about in class, like
-          Semrush for keyword analysis. Seeing it applied in real projects was
-          completely different from just learning about it. Another tool I tried
-          was Hotjar, which helped me understand how users actually interact
-          with pages—what modules work, which ones don't, and how important CTA
-          placement really is.
-        </p>
-        <p>
-          One of my favourite parts of this co-op is how much I get to explore.
-          When I share ideas, they're actually heard, and I get the freedom to
-          try things out and use the technical skills I've built in school.
-          Sometimes that means setting up a local tech workspace, and other
-          times it's experimenting with AI automation.
-        </p>
-      </>
-    ),
-    visual: (
-      <div className="media-container">
-        <Lottie src={seoAnim} loop autoplay className="responsive-lottie" />
-      </div>
-    ),
-  },
-  {
-    id: "responsive",
-    text: (
-      <p>
-        Lately, I've learned how much I dislike adjusting designs to make them
-        responsive, but working closely with the design team and seeing their
-        process has helped me understand how everything fits together from the
-        start. It's made me better at thinking ahead about how layouts will
-        behave across different devices. And along the way, I've picked up new
-        skills, like integrating AI into my workflow in a way that supports my
-        work without taking it over.
-      </p>
-    ),
-    visual: (
-      <div className="media-container">
-        <Lottie
-          src={responsiveAnim}
-          loop
-          autoplay
-          className="responsive-lottie"
-        />
-      </div>
-    ),
-  },
-];
-
 type Goal = {
   title: string;
   text: string;
@@ -201,116 +107,121 @@ const GOALS: Goal[] = [
   {
     title: "ORAL COMMUNICATION",
     animationData: speakerAnim,
-    text: "This is one of my biggest goals because it's a skill I need in any environment. I've definitely grown—I feel a real shift in how comfortable I am reaching out to people and asking questions. Before, it felt forced or nerve-wracking, but now it feels natural in my day-to-day work. There's still room to improve, especially when it comes to interacting with others more intentionally.",
+    text: "This was one of my biggest goals because it’s a skill I need in any environment. I’ve definitely grown; I feel a real shift in how comfortable I am reaching out to people and asking questions. Before, it felt forced or nerve-wracking, but now it feels natural in my day-to-day work. There’s still room to improve, especially when it comes to connecting with others more intentionally and taking the time to build those relationships.",
   },
   {
     title: "CRITICAL THINKING",
     animationData: thinkAnim,
-    text: "I've gotten better at researching things or asking questions when I don't understand something and figuring out why things work the way they do. I've also learned not to rely on AI for everything and to use my own skills to troubleshoot and optimize. Something I've gotten to see more is how fast to rush through hurdles and keep things moving even when there are blockers.",
+    text: "This has been another big area of growth for me. I’ve gotten better at researching things I don’t understand, asking questions, and figuring out why something works the way it does. I’ve also learned not to rely on AI for everything and to use my own skills to troubleshoot and optimize. Moving forward, I want to keep building this skill by pushing myself to learn new tools, explore more complex concepts, and dig deeper into the “why” behind the solutions I use.",
   },
   {
     title: "PROBLEM SOLVING",
     animationData: problemAnim,
-    text: "I'm always looking for ways to optimize things or fix bugs. One big hurdle was setting up a local tech environment. It came with a lot of confusion and uncertainty, but I stuck with it. It took time, but I eventually figured it out, and it felt amazing.",
+    text: "Problem Solving has been a big area of growth for me this term. I’ve learned how to handle challenges and blockers in a professional way, figuring out how to work around them while keeping things moving. I’ve gotten better at actively looking for ways to optimize things or tackle tricky bugs instead of giving up. One of the biggest hurdles I faced was setting up a local tech environment, it came with a lot of confusion and uncertainty, but I stuck with it. It took time, but I eventually figured it out, and it felt amazing.",
   },
   {
     title: "TECH LITERACY",
-    animationData: anim3,
-    text: "Something really cool I learned, and something you don't really see in school, is the full process of how a webpage comes to life. From context, to approvals, to design, to web, and then final review. Seeing how different teams and vendors interact is really cool. I also saw how important testing and approvals are to catch bugs you'd miss otherwise.",
+    animationData: anim2,
+    text: "Something really cool I learned during my co-op, and something you don’t really see in school, is the full process of how a webpage comes to life. From content, to approvals, to design, to more approvals, to web, and then final review. Seeing how different teams and even external vendors interact is really insightful because in school you usually do all the steps yourself. I also saw how important testing and approvals are. They might feel annoying, but they catch bugs and gaps you’d miss otherwise.",
   },
   {
     title: "TIME MANAGEMENT",
     imageSrc: timeImage,
-    text: "I've learned that good things take time. I'm always jumping into new ideas, so slowing down and deciding what's actually useful has been a big improvement. I've gotten much better at meeting deadlines, unlike school where procrastination was a huge issue. Now I can actually sit down, focus, and finish my work on time.",
+    text: "I’ve learned that good things take time. I’m always jumping into new ideas, so slowing down and deciding what’s useful has been a big improvement for me. I’ve gotten much better at meeting deadlines, unlike school where procrastination was a huge issue. Now I can sit down, focus, and finish my work on time instead of leaving everything to the last minute.",
   },
 ];
 
-/* =========================================================
-   SCROLL INTERACTIVE COMPONENTS
-   ========================================================= */
+const TOOL_IMAGES = [
+  htmlTool,
+  wordpressTool,
+  cssTool,
+  vsTool,
+  phpTool,
+  jsTool,
+  dockerTool,
+];
 
-const StackedScrollDuties = ({ steps }: { steps: DutyStep[] }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
+const JobDuties = () => (
+  <section className="job-duties">
+    <div className="center-header">
+      <h1 className="pixel-title">JOB DUTIES/PROJECTS</h1>
+      <h2 className="subtitle">WHAT I DO DAY TO DAY AND SOME COOL PROJECTS</h2>
+    </div>
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const deckProgress = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, Math.max(0, steps.length - 1)],
-  );
-
-  useMotionValueEvent(deckProgress, "change", (latest) => {
-    const idx = Math.min(steps.length - 1, Math.floor(latest + 0.001));
-    setActiveStep(idx);
-  });
-
-  return (
-    <div
-      className="scroll-container"
-      ref={containerRef}
-      style={{ height: `${steps.length * 60}vh` }}
-    >
-      <div className="scroll-sticky-content duties-sticky">
-        <div className="center-header">
-          <h1 className="pixel-title">JOB DUTIES/PROJECTS</h1>
-          <h2 className="subtitle">
-            WHAT I DO DAY TO DAY AND SOME COOL PROJECTS
-          </h2>
-        </div>
-
-        <div className="duty-card-deck">
-          <AnimatePresence initial={false}>
-            {steps.map((step, index) => {
-              const distance = index - activeStep;
-              const isVisible = index >= activeStep && index <= activeStep + 2;
-
-              return (
-                <motion.div
-                  key={step.id}
-                  className={`duty-step-card ${distance > 0 ? "is-behind" : ""}`}
-                  initial={false}
-                  animate={{
-                    opacity: isVisible ? 1 : 0,
-                    y: distance < 0 ? -200 : distance * -16,
-                    x: distance < 0 ? 0 : distance * -16,
-                    scale: 1,
-                    zIndex: steps.length - index,
-                    backgroundColor:
-                      distance === 0
-                        ? "#ffffff"
-                        : distance === 1
-                          ? "#e0e0e0"
-                          : "#808080",
-                  }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <div
-                    className="duty-card-inner"
-                    style={{
-                      opacity: distance === 0 ? 1 : 0,
-                      transition: "opacity 0.2s",
-                    }}
-                  >
-                    <div className="duty-text">{step.text}</div>
-                    <div className="duty-visual">{step.visual}</div>
-                    <span className="duty-number">
-                      {index + 1}/{steps.length}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+    <div className="job-duty-intro">
+      <p>
+        By the nature of my role, I work across both web management and digital
+        marketing. On the web side, I spend a lot of time coding with HTML, CSS,
+        JavaScript, PHP, and Gutenberg blocks inside a CMS called WordPress. I
+        learned HTML and CSS in q web design course I took my winter 2026
+        semester, picked up JavaScript on my own, and I’ve been learning PHP as
+        I go by reviewing smaller code sections and understanding how they fit
+        into the larger WordPress structure. On the marketing side, I use tools
+        like Yoast to optimize content for SEO, choose keywords, write metadata,
+        and apply the concepts I learned in my digital marketing course from
+        Summer 2025. This mix lets me connect what I’ve learned in school with
+        real projects, while also building new skills as I go.
+      </p>
+      <div className="tools-marquee" aria-label="Tools used in web development">
+        <div className="tools-marquee-track">
+          {[...TOOL_IMAGES, ...TOOL_IMAGES].map((tool, index) => (
+            <img
+              key={`${tool}-${index}`}
+              src={tool}
+              alt=""
+              aria-hidden="true"
+            />
+          ))}
         </div>
       </div>
     </div>
-  );
-};
+
+    <div className="job-duty-row job-duty-row-projects">
+      <div className="job-duty-animation">
+        <Lottie src={anim1} loop autoplay className="responsive-lottie" />
+      </div>
+      <div className="job-duty-copy">
+        <p>
+          Some of the bigger projects I’ve worked on are product pages, which
+          are a major source of conversions for the website. I take Figma
+          designs and turn them into fully functioning pages, applying the
+          coding principles I learned in school and implementing them in real
+          projects. I’ve learned how much I dislike adjusting designs to make
+          them responsive, but working with the design team and seeing their
+          process has helped me understand how everything fits together from the
+          start. It’s made me better at thinking ahead about how layouts will
+          behave across different devices. My more regular tasks include posting
+          blogs with SEO optimization, creating HTML emails, and helping with
+          eBooks and case studies. I also help maintain the WordPress site by
+          updating content, posting assets to Vimeo and YouTube, and building
+          custom landing pages when needed.
+        </p>
+      </div>
+    </div>
+
+    <div className="job-duty-row">
+      <div className="job-duty-copy">
+        <p>
+          I’ve also gotten to use tools I only heard about in class, like
+          SEMrush for keyword analysis. Seeing how the tool is used in practice
+          was completely different from just learning about it. Another tool I
+          tried was Hotjar, which helped me understand how users interact with
+          pages, what modules work, which ones don’t, and how important CTA
+          placement really is.
+        </p>
+        <p>
+          One of my favourite parts of this co-op is how much I get to explore.
+          When I share ideas, they’re heard, and I get the freedom to try things
+          out and use the technical skills I’ve built in school, like setting up
+          a local tech workspace, and experimenting with AI automation.
+        </p>
+      </div>
+      <div className="job-duty-animation">
+        <Lottie src={seoAnim} loop autoplay className="responsive-lottie" />
+      </div>
+    </div>
+  </section>
+);
 
 const ScrollStateGoals = ({ goals }: { goals: Goal[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -400,6 +311,12 @@ const ScrollStateGoals = ({ goals }: { goals: Goal[] }) => {
 const Coop = () => {
   const [activeTab, setActiveTab] = useState("WORK 1");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isKermitVisible, setIsKermitVisible] = useState(false);
+
+  const showKermit = () => {
+    setIsKermitVisible(true);
+    window.setTimeout(() => setIsKermitVisible(false), 2000);
+  };
 
   return (
     <>
@@ -469,13 +386,16 @@ const Coop = () => {
                       <TypewriterTitle text="CO-OP WORK TERM 1" />
                       <h2 className="subtitle">MAY - AUGUST 2026</h2>
                       <p>
-                        After wrapping up the first four months of my
-                        eight-month co-op at Magnet Forensics, I've really been
-                        able to level up my skills as a Digital Marketing and
-                        Web Management Co-op. These past months have pushed me
-                        to grow, experiment, and expand my tech toolkit. Here's
-                        a quick look at what I've accomplished so far, what I
-                        want to improve, and what I'm excited to explore next.
+                        My name is Haadiya. I'm a second year Computer Science
+                        student at the University of Guelph, studying Computer
+                        Science with an AOI in Data Science and a minor in
+                        Business Data Analytics. After wrapping up the first
+                        four months of my eight-month co-op at Magnet Forensics,
+                        I've really leveled up my skills as a Digital Marketing
+                        and Web Management Co-op. These past months pushed me to
+                        experiment, learn, and expand my tech toolkit. Here's a
+                        quick look at what I've accomplished so far, what I want
+                        to improve, and what I'm excited to explore next.
                       </p>
                     </div>
                     <div className="visual-content intro-images">
@@ -491,7 +411,13 @@ const Coop = () => {
 
                   <Reveal className="section-magnet split-section reverse">
                     <div className="text-content">
-                      <h1 className="pixel-title">MAGNET FORENSICS</h1>
+                      <h1 className="magnet-section-logo-title">
+                        <img
+                          src={magnetForensicsLogo}
+                          alt="Magnet Forensics"
+                          className="magnet-section-logo"
+                        />
+                      </h1>
                       <h2 className="subtitle">WATERLOO, ONTARIO OFFICE</h2>
                       <p>
                         Magnet Forensics is a global developer of digital
@@ -500,30 +426,35 @@ const Coop = () => {
                         evidence from computers, mobile devices, and the cloud.
                         Their mission is to "unlock the truth and protect the
                         innocent," and you can see it in the people who work
-                        here — they're genuinely passionate about what they do
-                        and truly want to make a difference.
-                      </p>
-                      <p>
-                        I couldn't have started my career in a better place. My
-                        team cares about their work, the environment is open and
-                        supportive, and I never feel uncomfortable asking
-                        questions. It's a collaborative space where I'm
-                        encouraged to learn, grow, and share ideas.
+                        here. They're genuinely passionate about what they do
+                        and truly want to make a difference. I couldn't have
+                        started my career in a better place. My team cares about
+                        their work, the environment is open and supportive, and
+                        I never feel uncomfortable asking questions. It's a
+                        collaborative space where I'm encouraged to learn, grow,
+                        and share ideas.
                       </p>
                     </div>
-                    <div className="visual-content">
-                      <div className="media-container">
-                        <img
-                          src={magnetForensicsLogo}
-                          alt="Magnet Forensics logo"
-                          className="responsive-img"
-                        />
-                      </div>
+                    <div className="visual-content magnet-visual">
+                      <motion.img
+                        src={magnetHqImage}
+                        alt="Magnet Forensics headquarters"
+                        className="magnet-hq-image"
+                        initial={{
+                          opacity: 0,
+                          x: -80,
+                          rotate: -12,
+                          scale: 0.7,
+                        }}
+                        whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
+                        viewport={{ once: true, amount: 0.35 }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      />
                     </div>
                   </Reveal>
 
                   <div className="section-duties">
-                    <StackedScrollDuties steps={DUTY_STEPS} />
+                    <JobDuties />
                   </div>
 
                   <div className="section-goals">
@@ -544,23 +475,25 @@ const Coop = () => {
                         treated in school compared to the workplace. In an
                         academic setting, AI is usually surrounded by strict
                         rules focused on preventing plagiarism, so you mostly
-                        see the "don't use this" side of it.
+                        see the “don’t use this” side of it.
                       </p>
                       <p>
-                        Working at a company that actually adopts AI showed me a
-                        completely different perspective. Here, the focus is on
-                        secure and responsible adoption. Exploring ideas around
-                        AI-powered workflows taught me how companies build
-                        governance, guardrails, and security reviews to make
-                        sure AI improves efficiency without replacing human
-                        oversight.
+                        Working at a company that's actively adopting AI showed
+                        me a completely different perspective. Here, the focus
+                        is on secure and responsible adoption. Exploring ideas
+                        around AI powered workflows taught me how companies
+                        build governance, guardrails, and security reviews to
+                        make sure AI improves efficiency without replacing human
+                        oversight. Identifying where AI shines like automating
+                        repetitive or tedious tasks and where it still
+                        struggles.
                       </p>
                       <p>
-                        Seeing where AI shines—like automating repetitive or
-                        tedious tasks—and where it still struggles—like
-                        capturing a nuanced, brand-specific voice—was honestly
-                        eye-opening. I really enjoyed seeing how the company
-                        uses AI in real, practical ways.
+                        I really enjoyed seeing how the company uses AI in real,
+                        practical ways, especially since school has such strict
+                        rules around it. It made me appreciate how different AI
+                        looks when you're in the industry versus learning about
+                        it in a classroom.
                       </p>
                     </div>
                   </Reveal>
@@ -573,9 +506,16 @@ const Coop = () => {
                           Notepad
                         </div>
                         <div className="notepad-controls">
-                          <button className="win-btn">_</button>
+                          <button className="win-btn" onClick={showKermit}>
+                            _
+                          </button>
                           <button className="win-btn">□</button>
-                          <button className="win-btn close">X</button>
+                          <button
+                            className="win-btn close"
+                            onClick={showKermit}
+                          >
+                            X
+                          </button>
                         </div>
                       </div>
                       <div className="notepad-menu">
@@ -590,26 +530,31 @@ const Coop = () => {
                           LOOKING AHEAD: IMPROVEMENTS FOR NEXT TERM
                         </h1>
                         <p>
-                          As I move into the second half of my co-op, I want to
+                          As I move into the second half of my co‑op, I want to
                           step a little outside my comfort zone and focus on a
                           few areas that will help me grow even more. I want to
                           push my technical skills further by building
                           meaningful automated solutions that the team can rely
-                          on long after my term ends.
-                        </p>
-                        <p>
-                          I also want to dive deeper into data analysis: I've
-                          used tools like Hotjar and Google Analytics briefly,
-                          but now I want to actively study user behavior and use
-                          that data to influence web design decisions. Another
-                          goal is to put myself out there more by setting up
-                          coffee chats and learning about what people in
-                          different roles do day to day. I think hearing their
-                          experiences will help me explore other areas of tech
-                          and marketing that might interest me in the future.
+                          on long after my term ends. I also want to dive deeper
+                          into data analysis, I’ve used tools like Hotjar and
+                          Google Analytics briefly, but now I want to actively
+                          study user behavior and use that data to influence web
+                          design decisions. Another goal is to put myself out
+                          there more learning about what people in different
+                          roles do day to day. I think hearing their experiences
+                          will help me explore other areas of tech and marketing
+                          that might interest me in the future. I’m excited to
+                          see what the next four months have in store for me.
                         </p>
                       </div>
                     </div>
+                    {isKermitVisible && (
+                      <img
+                        src={noKermitGif}
+                        alt="Kermit reacting"
+                        className="notepad-reaction-gif"
+                      />
+                    )}
                   </Reveal>
                 </motion.div>
               )}
@@ -624,8 +569,8 @@ const Coop = () => {
                 >
                   <h1 className="pixel-title">WORK TERM 2</h1>
                   <p>
-                    Placeholder content for the upcoming winter term. Come back
-                    soon to follow the next chapter.
+                    Work Term 2 report for the last four months of my
+                    eight-month co-op at Magnet Forensics, coming in December.
                   </p>
                 </motion.div>
               )}
@@ -640,8 +585,7 @@ const Coop = () => {
                 >
                   <h1 className="pixel-title">SUMMER 2027</h1>
                   <p>
-                    Placeholder content for a future summer experience. This
-                    page will grow with the work.
+                    Coming next summer...
                   </p>
                 </motion.div>
               )}
@@ -654,17 +598,21 @@ const Coop = () => {
         <div className="footer-content">
           <span className="logo-text">HAADIYA ALI</span>
           <nav className="footer-links" aria-label="Social links">
-            <a href="https://github.com/" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/HaadiyaAli"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/haadiya-ali/"
               target="_blank"
               rel="noreferrer"
             >
               LinkedIn
             </a>
-            <a href="mailto:hello@example.com">Email</a>
+            <a href="mailto:hali21@uoguelph.ca">Email</a>
           </nav>
         </div>
       </footer>
